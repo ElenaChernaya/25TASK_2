@@ -1,27 +1,26 @@
 #include "disk.h"
+#include <fstream>
+#include "disk.h"
 #include "ram.h"
 
-
-void disk(std::string& command) {
-    std::ofstream data_input ("C:/File/data.txt");
-
-    if (command == "save")
+void save()
+{
+    std::ofstream out("numbers.txt");
+    int buffer[8];
+    read(buffer);
+    for (int i = 0; i < 8; ++i)
     {
-       int i = 0;
-       while (i < ram().size()) {
-           data_input << ram()[i];
-       }
-       data_input.close();
+        out << buffer[i] << std::endl;
     }
+}
 
-    else if (command == "load")
+void load()
+{
+    std::ifstream in("numbers.txt");
+    int buffer[8];
+    for (int i = 0; i < 8; ++i)
     {
-        std::vector<int> vec;
-        int j = 0;
-        std::ifstream data_output ("C:/File/data.txt");
-        while(!data_output.eof()) {
-            data_output >> j;
-            vec.push_back(j);
-        }
+        in >> buffer[i];
     }
+    write(buffer);
 }

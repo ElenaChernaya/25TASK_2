@@ -1,37 +1,40 @@
-#include "headers.h"
+#include <iostream>
+#include "cpu.h"
+#include "ram.h"
+#include "disk.h"
+#include "gpu.h"
+#include "kbd.h"
 
-
-int main() {
-    std::string command;
-    std::cout << "Enter the command: ";
-    std::cin >> command;
-
-    while (command != "exit")
+int main()
+{
+    while (true)
     {
-        if (command == "input")
+        std::string command;
+        std::cout << "Command:";
+        std::cin >> command;
+        if (command == "sum")
         {
-            kbd();
+            sum();
         }
-
-        else if (command == "save" || command == "load")
+        else if (command == "save")
         {
-            disk(command);
+            save();
         }
-
-        else if(command == "display")
+        else if (command == "load")
+        {
+            load();
+        }
+        else if (command == "input")
+        {
+            input();
+        }
+        else if (command == "display")
         {
             display();
         }
-
-        else if(command == "sum")
+        else
         {
-            compute();
+            std::cerr << "Unknown command: " << command << std::endl;
         }
-
     }
-
-
-
-
-    return 0;
 }

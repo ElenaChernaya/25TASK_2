@@ -1,7 +1,12 @@
 cmake_minimum_required(VERSION 3.17)
 
 
-add_executable(25TASK_2 main.cpp ram.cpp kbd.cpp cpu.cpp disk.cpp gpu.cpp ${My_Dir}/headers.h)
+add_executable(Operation
+        main.cpp
+        cpu.cpp
+        ram.cpp
+        disk.cpp
+        gpu.cpp
+        kbd.cpp)
 
-
-target_include_directories(25TASK_2 PUBLIC ${My_Dir})
+target_include_directories(Operation PUBLIC ${MY_INCLUDE_DIR})
